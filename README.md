@@ -34,25 +34,23 @@ Then you can interact with advocate5000 by typing `advocate5000 help`.
     advocate5000 help - Displays all of the help commands that advocate5000 knows about.
     ...
 
-### Configuration
+### Bringing Advocate5000 to Slack
 
-A few scripts (including some installed by default) require environment
-variables to be set as a simple form of configuration.
+#### Development Workspace
 
-Each script should have a commented header which contains a "Configuration"
-section that explains which values it requires to be placed in which variable.
-When you have lots of scripts installed this process can be quite labour
-intensive. The following shell command can be used as a stop gap until an
-easier way to do this has been implemented.
+Each dev can bring their own copy of the bot to the workspace. To set up your bot:
 
-    grep -o 'hubot-[a-z0-9_-]\+' external-scripts.json | \
-      xargs -n1 -I {} sh -c 'sed -n "/^# Configuration/,/^#$/ s/^/{} /p" \
-          $(find node_modules/{}/ -name "*.coffee")' | \
-        awk -F '#' '{ printf "%-25s %s\n", $1, $2 }'
+1. Add a new configuration of the Hubot slack app by clicking Add Configuration on [this page]https://toastlifeboat-dev.slack.com/apps/A0F7XDU93-hubot?page=1
+2. Give your bot a unique username
+3. Copy the API token
+4. Start your bot with the following command: `HUBOT_SLACK_TOKEN=xoxb-YOUR-TOKEN-HERE ./bin/hubot --adapter slack`
 
-How to set environment variables will be specific to your operating system.
-Rather than recreate the various methods and best practices in achieving this,
-it's suggested that you search for a dedicated guide focused on your OS.
+Once your bot is up and running you will need to invite it to any channel you wish to use it in.
+
+
+#### Production Workspace
+
+Don't do this yet.
 
 ### Scripting
 
